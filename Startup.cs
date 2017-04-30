@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.NodeServices;
 
 namespace dotnetsheff_2017
 {
@@ -30,7 +29,6 @@ namespace dotnetsheff_2017
         {
             // Add framework services.
             services.AddMvc();
-            services.AddNodeServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
