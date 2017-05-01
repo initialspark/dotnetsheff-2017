@@ -15,5 +15,10 @@ namespace dotnetsheff_2017.Controllers
         {
             return View();
         }
+        
+        public  IActionResult GeneratePdf()
+        {
+            return Content("nothing here :)");
+        }
     }
 }
