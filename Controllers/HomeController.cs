@@ -19,6 +19,10 @@ namespace dotnetsheff_2017.Controllers
         public async Task<IActionResult> GeneratePdf([FromServices] INodeServices nodeServices, [FromServices] IHostingEnvironment env)
         {
             var data = GetHtmlTicket(env);
+
+            if(data == null)
+                return NotFound();
+            
             var options = new { format = "Letter" };     
             
             var result = await nodeServices.InvokeAsync<Stream>("generatePdf.js",options, data);
@@ -29,6 +33,10 @@ namespace dotnetsheff_2017.Controllers
             var data = new { Film ="Logan", Value = "£10.00", Type = "VIP"};
 
             var reportPath = env.WebRootFileProvider.GetFileInfo("html/ticket.html");
+            
+            if(reportPath == null)
+                return null;
+            
             var html =  System.IO.File.ReadAllText(reportPath.PhysicalPath);
 
             html = html.Replace("{#film}",data.Film);
